@@ -1,6 +1,7 @@
-# Marcel Seidel Portfolio
+# TheSandHawk Portfolio
 
-Dies ist der Code für meine persönliche GitHub Pages Seite. Die Startseite ist eine einseitige Portfolio-Seite mit einem modernen Dark-Mode-Design, direkten Verweisen auf mein GitHub-Profil und Kontaktinformationen.
+Dies ist der Code für meine persönliche GitHub-Pages-Seite. Die Startseite erzählt mehr über meinen Werdegang als
+Software Engineer und EDV-Leiter, listet meine wichtigsten Skills auf und berechnet mein aktuelles Alter automatisch.
 
 ## Lokale Entwicklung
 
