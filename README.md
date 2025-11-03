@@ -1,7 +1,7 @@
 # TheSandHawk Portfolio
 
 Dies ist der Code für meine persönliche GitHub-Pages-Seite. Die Startseite erzählt mehr über meinen Werdegang als
-Software Engineer und EDV-Leiter, listet meine wichtigsten Skills auf und berechnet mein aktuelles Alter automatisch.
+Software Engineer und EDV-Leiter und listet meine wichtigsten Skills auf.
 
 ## Lokale Entwicklung
 
