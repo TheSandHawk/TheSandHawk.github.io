@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Sand Hawk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light dark;
+            --bg: #0d1117;
+            --bg-alt: #161b22;
+            --accent: #ff7b54;
+            --accent-light: #ffad84;
+            --text: #e6edf3;
+            --text-muted: rgba(230, 237, 243, 0.65);
+            --border: rgba(255, 255, 255, 0.08);
+            font-size: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Source Sans 3', system-ui, sans-serif;
+            background: radial-gradient(circle at top, rgba(255, 123, 84, 0.07), transparent 55%),
+                        linear-gradient(160deg, var(--bg), #070b10);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2.5rem clamp(1.5rem, 4vw, 5rem);
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 2rem;
+            letter-spacing: 0.04em;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: var(--accent-light);
+            transform: translateY(-1px);
+        }
+
+        main {
+            padding: 0 clamp(1.5rem, 4vw, 5rem) 4rem;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(2rem, 5vw, 4rem);
+            align-items: center;
+            padding: 3rem 0 4rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 1.1rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--accent-light);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.4rem, 6vw, 3.8rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: clamp(1rem, 2.4vw, 1.15rem);
+            max-width: 40ch;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .cta {
+            padding: 0.9rem 1.8rem;
+            border-radius: 999px;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--accent), #f35d4b);
+            color: #10131a;
+            box-shadow: 0 15px 25px rgba(255, 123, 84, 0.25);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .cta:hover,
+        .cta:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(255, 123, 84, 0.18);
+        }
+
+        .card-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+
+        section {
+            margin-top: 4rem;
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 1.2rem;
+            padding: 1.8rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover,
+        .card:focus-within {
+            transform: translateY(-4px);
+            border-color: rgba(255, 123, 84, 0.45);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-light);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .skill {
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            padding: 3rem clamp(1.5rem, 4vw, 5rem);
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 5rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus {
+            color: var(--accent-light);
+        }
+
+        @media (max-width: 720px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            nav a {
+                margin: 0 0.8rem;
+            }
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero p {
+                margin: 0 auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">The Sand Hawk</div>
+    <nav aria-label="Hauptnavigation">
+        <a href="#about">Über mich</a>
+        <a href="#projects">Projekte</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Kontakt</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div>
+            <span class="badge">Portfolio &bull; Web &bull; Kreativität</span>
+            <h1>Hey, ich bin The Sand Hawk –
+                baue digitale Ideen mit Liebe zum Detail.</h1>
+            <p>
+                Ich kombiniere moderne Web-Technologien mit einem Auge für Design. Ob kleine Experimente oder
+                ausgewachsene Projekte – ich helfe Ideen sichtbar zu machen.
+            </p>
+            <div class="hero-actions">
+                <a class="cta cta-primary" href="#projects">Projekte entdecken</a>
+                <a class="cta cta-secondary" href="#contact">Kontakt aufnehmen</a>
+            </div>
+        </div>
+        <div aria-hidden="true">
+            <svg width="100%" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#ff7b54" />
+                        <stop offset="100%" stop-color="#ffad84" />
+                    </linearGradient>
+                    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+                        <feGaussianBlur stdDeviation="25" result="coloredBlur" />
+                        <feMerge>
+                            <feMergeNode in="coloredBlur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+                <rect x="20" y="20" width="280" height="280" rx="60" fill="url(#grad)" filter="url(#glow)" opacity="0.45"/>
+                <circle cx="160" cy="160" r="90" fill="url(#grad)" opacity="0.35" />
+                <path d="M120 200 Q160 140 200 200" stroke="#fff" stroke-opacity="0.4" stroke-width="6" stroke-linecap="round" fill="none" />
+                <circle cx="140" cy="140" r="12" fill="#fff" opacity="0.4" />
+                <circle cx="190" cy="180" r="8" fill="#fff" opacity="0.4" />
+            </svg>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>Über mich</h2>
+        <div class="card">
+            <p>
+                Mit einem Hintergrund in Webentwicklung und einem Faible für Storytelling erwecke ich Projekte zum Leben.
+                Ich liebe es, wenn Technik und Design nahtlos zusammenarbeiten und Nutzer:innen ein Erlebnis bieten, das
+                hängen bleibt.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Ausgewählte Projekte</h2>
+        <div class="card-grid">
+            <article class="card">
+                <h3>📚 Wissenshub</h3>
+                <p>
+                    Eine Plattform zum Sammeln von Tutorials, Notizen und Experimenten. Fokus auf klare Struktur und
+                    leichte Erweiterbarkeit.
+                </p>
+            </article>
+            <article class="card">
+                <h3>🎨 Creative Playground</h3>
+                <p>
+                    Sammlung interaktiver Kunst-Experimente. Shader, Animationen und kleine Games – Spielwiese für Ideen.
+                </p>
+            </article>
+            <article class="card">
+                <h3>⚙️ Tooling &amp; Automation</h3>
+                <p>
+                    Kleine Helferlein für den Alltag: Skripte, Automationen und Workflows, die Routinearbeit erleichtern.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills &amp; Tech</h2>
+        <div class="card">
+            <div class="skills">
+                <span class="skill">HTML &amp; CSS</span>
+                <span class="skill">TypeScript</span>
+                <span class="skill">React</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Automatisierung</span>
+                <span class="skill">UI/UX</span>
+                <span class="skill">ZAPIER/NO-CODE</span>
+                <span class="skill">Community Building</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Kontakt</h2>
+        <div class="card">
+            <p>
+                Lass uns zusammenarbeiten! Schreib mir eine Nachricht auf <a href="mailto:hello@thesandhawk.dev">hello@thesandhawk.dev</a>
+                oder folge meinen Updates auf <a href="https://github.com/TheSandHawk" target="_blank" rel="noopener">GitHub</a>.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© <span id="year"></span> The Sand Hawk. Gebaut mit Liebe und ein bisschen Kaffee.</p>
+    <div class="footer-links">
+        <a href="https://github.com/TheSandHawk" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+        <a href="mailto:hello@thesandhawk.dev">E-Mail</a>
+    </div>
+</footer>
+
+<script>
+    const year = new Date().getFullYear();
+    document.getElementById('year').textContent = year;
+</script>
+</body>
+</html>
